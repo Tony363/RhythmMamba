@@ -124,7 +124,9 @@ if __name__ == "__main__":
     config = get_config(args)
     print('Configuration:')
     print(config, end='\n\n')
-
+    # print(config.TRAIN.DATA.CACHED_PATH)
+    # print(config.VALID.DATA.CACHED_PATH)
+    # print(config.TEST.DATA.CACHED_PATH)
     data_loader_dict = dict()
     if config.TOOLBOX_MODE == "train_and_test":
         # neural method dataloader
@@ -211,7 +213,7 @@ if __name__ == "__main__":
         else:
             data_loader_dict['valid'] = None
 
-    if config.TOOLBOX_MODE == "train_and_test" or config.TOOLBOX_MODE == "only_test":
+    if config.TOOLBOX_MODE == "train_and_test" or config.TOOLBOX_MODE == "only_test" or config.TOOLBOX_MODE == "only_test_student":
         # test_loader
         if config.TEST.DATA.DATASET == "COHFACE":
             # test_loader = data_loader.COHFACELoader.COHFACELoader
@@ -230,6 +232,8 @@ if __name__ == "__main__":
             test_loader = data_loader.BP4DPlusBigSmallLoader.BP4DPlusBigSmallLoader
         elif config.TEST.DATA.DATASET == "UBFC-PHYS":
             test_loader = data_loader.UBFCPHYSLoader.UBFCPHYSLoader
+        elif config.TEST.DATA.DATASET == "student":
+            test_loader = data_loader.student_loader.StudentLoader
         else:
             raise ValueError("Unsupported dataset! Currently supporting UBFC-rPPG, PURE, MMPD, \
                              SCAMPS, BP4D+ (Normal and BigSmall preprocessing), and UBFC-PHYS.")
@@ -294,9 +298,9 @@ if __name__ == "__main__":
 
     if config.TOOLBOX_MODE == "train_and_test":
         train_and_test(config, data_loader_dict)
-    elif config.TOOLBOX_MODE == "only_test":
+    elif config.TOOLBOX_MODE == "only_test" or config.TOOLBOX_MODE == "only_test_student":
         test(config, data_loader_dict)
     elif config.TOOLBOX_MODE == "unsupervised_method":
         unsupervised_method_inference(config, data_loader_dict)
     else:
-        print("TOOLBOX_MODE only support train_and_test or only_test !", end='\n\n')
+        print("TOOLBOX_MODE only support train_and_test or only_test or only_test_student!", end='\n\n')

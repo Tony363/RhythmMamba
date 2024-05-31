@@ -1,0 +1,6 @@
+# ninja log v5
+1	3079	1717098823446346232	/home/tony/RhythmMamba/setup/causal-conv1d-main/build/temp.linux-x86_64-cpython-39/csrc/causal_conv1d_update.o	9839f5082ae143ae
+1	9385	1717098829734404638	/home/tony/RhythmMamba/setup/causal-conv1d-main/build/temp.linux-x86_64-cpython-39/csrc/causal_conv1d_fwd.o	5d916811cf154b28
+0	13391	1717098833758442007	/home/tony/RhythmMamba/setup/causal-conv1d-main/build/temp.linux-x86_64-cpython-39/csrc/causal_conv1d.o	e06fe39bba8b20a
+1	98922	1717098919135233851	/home/tony/RhythmMamba/setup/causal-conv1d-main/build/temp.linux-x86_64-cpython-39/csrc/causal_conv1d_bwd.o	5ed9a8623527b846
+14	12626	1717102034389480901	/home/tony/RhythmMamba/setup/causal-conv1d-main/build/temp.linux-x86_64-cpython-39/csrc/causal_conv1d.o	e06fe39bba8b20a
