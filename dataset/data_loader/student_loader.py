@@ -92,7 +92,9 @@ class StudentLoader(BaseLoader):
 
         return data_dirs_new
 
-    def save_multi_process(self, frames_clips, bvps_clips, filename):
+
+
+    def save_multi_process(self, frames_clips, bvps_clips, filename,lock):
         """Save all the chunked data with multi-thread processing.
 
         Args:
@@ -105,18 +107,64 @@ class StudentLoader(BaseLoader):
         """
         if not os.path.exists(self.cached_path):
             os.makedirs(self.cached_path, exist_ok=True)
-        count = -1
+        count = 0
         input_path_name_list = []
         for i in range(len(bvps_clips)):
-            count += 1
             input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
             input_path_name_list.append(input_path_name)
-            if os.path.exists(input_path_name):
-                continue
-            np.save(input_path_name, frames_clips[i])
+            with lock:
+                np.save(input_path_name, frames_clips[i])
+            count += 1
         return input_path_name_list, None
 
-    def preprocess_dataset_subprocess(self, data_dirs, config_preprocess, i, file_list_dict):
+    def save(self, frames_clips, bvps_clips, filename):
+        """Save all the chunked data.
+
+        Args:
+            frames_clips(np.array): blood volumne pulse (PPG) labels.
+            bvps_clips(np.array): the length of each chunk.
+            filename: name the filename
+        Returns:
+            count: count of preprocessed data
+        """
+
+        if not os.path.exists(self.cached_path):
+            os.makedirs(self.cached_path, exist_ok=True)
+        count = 0
+        input_path_name_list = []
+        for i in range(len(bvps_clips)):
+            assert (len(self.inputs) == len(self.labels))
+            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
+            input_path_name_list.append(input_path_name)
+            np.save(input_path_name, frames_clips[i])
+            count += 1
+        return input_path_name_list,None
+
+
+    def seq_list_dict(
+        self,
+        data_dirs:list,
+        config_preprocess,
+    )->list:
+        """Preprocesses a list of data directories.
+
+        Args:
+            data_dirs(List[str]): a list of video_files.
+            config_preprocess(CfgNode): preprocessing settings(ref:config.py).
+        Returns:
+            file_list_dict(Dict): Dictionary containing information regarding processed data ( path names)
+        """
+        file_list_dict = {}
+        for i in tqdm(range(len(data_dirs))):
+            saved_filename = data_dirs[i]['index']
+            frames = self.read_video(data_dirs[i]['path'])
+            bvps = np.ones(frames.shape[0])
+            frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
+            input_name_list, _ = self.save(frames_clips, bvps_clips, saved_filename)
+            file_list_dict[i] = input_name_list
+        return file_list_dict
+
+    def preprocess_dataset_subprocess(self, data_dirs, config_preprocess, i, file_list_dict,lock):
         """ 
         invoked by preprocess_dataset for multi_process.
         """
@@ -125,7 +173,7 @@ class StudentLoader(BaseLoader):
         frames = self.read_video(data_dirs[i]['path'])
         bvps = np.ones(frames.shape[0])
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
-        input_name_list, _ = self.save_multi_process(frames_clips, bvps_clips, saved_filename)
+        input_name_list, _ = self.save_multi_process(frames_clips, bvps_clips, saved_filename,lock)
         file_list_dict[i] = input_name_list
 
     @staticmethod

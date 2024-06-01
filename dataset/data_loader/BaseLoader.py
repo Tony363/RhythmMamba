@@ -15,7 +15,7 @@ from scipy import sparse
 from unsupervised_methods.methods import POS_WANG
 from unsupervised_methods import utils
 import math
-from multiprocessing import Pool, Process, Value, Array, Manager
+from multiprocessing import Pool, Process, Value, Array, Manager,Lock
 
 import cv2
 import numpy as np
@@ -201,13 +201,31 @@ class BaseLoader(Dataset):
             begin(float): index of begining during train/val split.
             end(float): index of ending during train/val split.
         """
-        data_dirs_split = self.split_raw_data(data_dirs, begin, end)  # partition dataset 
         # send data directories to be processed
-        file_list_dict = self.multi_process_manager(data_dirs_split, config_preprocess) 
+        if config_preprocess.MULTI_PROCESS:
+            data_dirs_split = self.split_raw_data(data_dirs, begin, end)  # partition dataset 
+            file_list_dict = self.multi_process_manager(data_dirs_split, config_preprocess)
+        else:
+            file_list_dict = self.seq_list_dict(data_dirs,config_preprocess)
         self.build_file_list(file_list_dict)  # build file list
         self.load_preprocessed_data()  # load all data and corresponding labels (sorted for consistency)
         print("Total Number of raw files preprocessed:", len(data_dirs_split), end='\n\n')
 
+    def seq_list_dict(
+        self,
+        data_dirs:list,
+        config_preprocess,
+    )->list:
+        """Preprocesses a list of data directories.
+
+        Args:
+            data_dirs(List[str]): a list of video_files.
+            config_preprocess(CfgNode): preprocessing settings(ref:config.py).
+        Returns:
+            file_list_dict(Dict): Dictionary containing information regarding processed data ( path names)
+        """
+        return Exception("'seq_list_dict' Not Implemented")
+    
     def preprocess(self, frames, bvps, config_preprocess):
         """Preprocesses a pair of data.
 
@@ -229,7 +247,8 @@ class BaseLoader(Dataset):
             config_preprocess.CROP_FACE.DETECTION.DYNAMIC_DETECTION_FREQUENCY,
             config_preprocess.CROP_FACE.DETECTION.USE_MEDIAN_FACE_BOX,
             config_preprocess.RESIZE.W,
-            config_preprocess.RESIZE.H)
+            config_preprocess.RESIZE.H
+        )
         # Check data transformation type
         data = list()  # Video data
         for data_type in config_preprocess.DATA_TYPE:
@@ -415,7 +434,7 @@ class BaseLoader(Dataset):
             count += 1
         return input_path_name_list, label_path_name_list
 
-    def multi_process_manager(self, data_dirs, config_preprocess, multi_process_quota=8):
+    def multi_process_manager(self, data_dirs, config_preprocess, multi_process_quota=2):
         """Allocate dataset preprocessing across multiple processes.
 
         Args:
@@ -435,7 +454,7 @@ class BaseLoader(Dataset):
         file_list_dict = manager.dict()  # dictionary for all processes to store processed files
         p_list = []  # list of processes
         running_num = 0  # number of running processes
-
+        lock = Lock()
         # in range of number of files to process
         for i in choose_range:
             process_flag = True
@@ -443,7 +462,7 @@ class BaseLoader(Dataset):
                 if running_num < multi_process_quota:  # in case of too many processes
                     # send data to be preprocessing task
                     p = Process(target=self.preprocess_dataset_subprocess, 
-                                args=(data_dirs,config_preprocess, i, file_list_dict))
+                                args=(data_dirs,config_preprocess, i, file_list_dict,lock))
                     p.start()
                     p_list.append(p)
                     running_num += 1
