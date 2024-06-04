@@ -67,13 +67,13 @@ TEST:
     DATASET: student
     DO_PREPROCESS: True                # if first time, should be true
     DATA_FORMAT: NDCHW
-    DATA_PATH:  "/home/tony/Train" #"/experiment0/user/DataSet/PURE/"          # Raw dataset path, need to be updated
-    CACHED_PATH: "/home/tony/Train/processed"    # Processed dataset save path, need to be updated
+    DATA_PATH:  "/data/tony/Train" #"/experiment0/user/DataSet/PURE/"          # Raw dataset path, need to be updated
+    CACHED_PATH: "/data/tony/Train/processed"    # Processed dataset save path, need to be updated
     EXP_DATA_NAME: ""
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      MULTI_PROCESS: False
+      MULTI_PROCESS: True
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True
