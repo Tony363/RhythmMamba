@@ -6,6 +6,7 @@ S. Bobbia, R. Macwan, Y. Benezeth, A. Mansouri, J. Dubois, "Unsupervised skin ti
 """
 import glob
 import os
+import h5py
 import re
 from multiprocessing import Pool, Process, Value, Array, Manager
 
@@ -94,7 +95,7 @@ class StudentLoader(BaseLoader):
 
 
 
-    def save_multi_process(self, frames_clips, bvps_clips, filename,lock):
+    def save_multi_process(self, frames_clips, bvps_clips, filename,lock,hf):
         """Save all the chunked data with multi-thread processing.
 
         Args:
@@ -113,7 +114,8 @@ class StudentLoader(BaseLoader):
             input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
             input_path_name_list.append(input_path_name)
             with lock:
-                np.save(input_path_name, frames_clips[i])
+                hf.create_dataset("{0}_{1}".format(filename, str(count)), data=frames_clips[i])
+                # np.save(input_path_name, frames_clips[i])
             count += 1
         return input_path_name_list, None
 
@@ -173,7 +175,8 @@ class StudentLoader(BaseLoader):
         frames = self.read_video(data_dirs[i]['path'])
         bvps = np.ones(frames.shape[0])
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
-        input_name_list, _ = self.save_multi_process(frames_clips, bvps_clips, saved_filename,lock)
+        with h5py.File(os.path.join(self.cached_path,"engagenet.h5"), 'w') as hf:
+            input_name_list, _ = self.save_multi_process(frames_clips, bvps_clips, saved_filename,lock,hf)
         file_list_dict[i] = input_name_list
 
     @staticmethod

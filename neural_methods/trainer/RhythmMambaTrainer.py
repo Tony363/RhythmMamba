@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import torch.optim as optim
 import random
+import h5py
 from tqdm import tqdm
 from evaluation.post_process import calculate_hr
 from evaluation.metrics import calculate_metrics
@@ -218,7 +219,9 @@ class RhythmMambaTrainer(BaseTrainer):
                         predictions[subj_index] = dict()
                     predictions[subj_index][sort_index] = pred_ppg_test[ib * chunk_len:(ib + 1) * chunk_len]
             print(' ')
-        torch.save(predictions, '/home/tony/Train/predictions/tensor_dict.pth')
+        with h5py.File('/home/tony/Train/predictions/rppg.h5') as hf:
+            hf.create_dataset('rythmmamba_rppg', data=predictions)
+            # torch.save(predictions, '/home/tony/Train/predictions/tensor_dict.pth')
         return predictions
 
     def save_model(self, index):
