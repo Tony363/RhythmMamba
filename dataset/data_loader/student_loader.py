@@ -111,7 +111,7 @@ class StudentLoader(BaseLoader):
         count = 0
         input_path_name_list = []
         for i in range(len(bvps_clips)):
-            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
+            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename.split('/')[-1], str(count))
             input_path_name_list.append(input_path_name)
             with lock:
                 hf.create_dataset("{0}_{1}".format(filename, str(count)), data=frames_clips[i])
