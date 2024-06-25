@@ -5,6 +5,8 @@ Summary: Causal depthwise conv1d in CUDA, with a PyTorch interface
 Home-page: https://github.com/Dao-AILab/causal-conv1d
 Author: Tri Dao
 Author-email: tri@tridao.me
+License: UNKNOWN
+Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: BSD License
 Classifier: Operating System :: Unix
@@ -43,3 +45,5 @@ import torch.nn.functional as F
 
 F.conv1d(x, weight.unsqueeze(1), bias, padding=width - 1, groups=dim)[..., :seqlen]
 ```
+
+
