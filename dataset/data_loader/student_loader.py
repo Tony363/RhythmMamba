@@ -14,6 +14,7 @@ import cv2
 import numpy as np
 from dataset.data_loader.BaseLoader import BaseLoader
 from tqdm import tqdm
+from utils import logger
 
 
 class StudentLoader(BaseLoader):
@@ -119,7 +120,7 @@ class StudentLoader(BaseLoader):
             count += 1
         return input_path_name_list, None
 
-    def save(self, frames_clips, bvps_clips, filename):
+    def save(self, frames_clips, bvps_clips, filename,dsi):
         """Save all the chunked data.
 
         Args:
@@ -134,12 +135,15 @@ class StudentLoader(BaseLoader):
             os.makedirs(self.cached_path, exist_ok=True)
         count = 0
         input_path_name_list = []
-        for i in range(len(bvps_clips)):
-            assert (len(self.inputs) == len(self.labels))
-            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
-            input_path_name_list.append(input_path_name)
-            np.save(input_path_name, frames_clips[i])
-            count += 1
+        with h5py.File(os.path.join(self.cached_path,f"engagenet_{dsi}.h5"), 'w') as hf:
+            for i in range(len(bvps_clips)):
+                assert (len(self.inputs) == len(self.labels))
+                # input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
+                # input_path_name_list.append(input_path_name)
+                # np.save(input_path_name, frames_clips[i])
+                input_path_name_list.append("{0}_{1}".format(filename, str(count)))
+                hf.create_dataset("{0}_{1}".format(filename, str(count)), data=frames_clips[i])
+                count += 1
         return input_path_name_list,None
 
 
@@ -162,7 +166,7 @@ class StudentLoader(BaseLoader):
             frames = self.read_video(data_dirs[i]['path'])
             bvps = np.ones(frames.shape[0])
             frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
-            input_name_list, _ = self.save(frames_clips, bvps_clips, saved_filename)
+            input_name_list, _ = self.save(frames_clips, bvps_clips, saved_filename,i)
             file_list_dict[i] = input_name_list
         return file_list_dict
 
@@ -175,7 +179,7 @@ class StudentLoader(BaseLoader):
         frames = self.read_video(data_dirs[i]['path'])
         bvps = np.ones(frames.shape[0])
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
-        with h5py.File(os.path.join(self.cached_path,"engagenet.h5"), 'w') as hf:
+        with h5py.File(os.path.join(self.cached_path,f"engagenet_{i}.h5"), 'w') as hf:
             input_name_list, _ = self.save_multi_process(frames_clips, bvps_clips, saved_filename,lock,hf)
         file_list_dict[i] = input_name_list
 

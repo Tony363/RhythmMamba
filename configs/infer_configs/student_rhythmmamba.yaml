@@ -73,7 +73,7 @@ TEST:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      MULTI_PROCESS: True
+      MULTI_PROCESS: False
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True
@@ -89,7 +89,6 @@ TEST:
       RESIZE:
         H: 128
         W: 128
-    # SAVE_PRED_PATH: "/home/tony/Train/predictions"
 DEVICE: cuda:0
 NUM_OF_GPU_TRAIN: 1
 LOG:

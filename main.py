@@ -12,6 +12,7 @@ from neural_methods import trainer
 from unsupervised_methods.unsupervised_predictor import unsupervised_predict
 from torch.utils.data import DataLoader
 import os 
+from utils import logger
 
 RANDOM_SEED = 100
 torch.manual_seed(RANDOM_SEED)
@@ -114,19 +115,20 @@ def unsupervised_method_inference(config, data_loader):
 if __name__ == "__main__":
     #os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
     # parse arguments.
+    
     parser = argparse.ArgumentParser()
     parser = add_args(parser)
     parser = trainer.BaseTrainer.BaseTrainer.add_trainer_args(parser)
     parser = data_loader.BaseLoader.BaseLoader.add_data_loader_args(parser)
     args = parser.parse_args()
-
+    
     # configurations.
     config = get_config(args)
-    print('Configuration:')
-    print(config, end='\n\n')
-    # print(config.TRAIN.DATA.CACHED_PATH)
-    # print(config.VALID.DATA.CACHED_PATH)
-    # print(config.TEST.DATA.CACHED_PATH)
+    logger.info('Configuration:')
+    logger.info(f"{config}")
+    # logger.info(config.TRAIN.DATA.CACHED_PATH)
+    # logger.info(config.VALID.DATA.CACHED_PATH)
+    # logger.info(config.TEST.DATA.CACHED_PATH)
     data_loader_dict = dict()
     if config.TOOLBOX_MODE == "train_and_test":
         # neural method dataloader
@@ -239,7 +241,7 @@ if __name__ == "__main__":
                              SCAMPS, BP4D+ (Normal and BigSmall preprocessing), and UBFC-PHYS.")
         
         if config.TOOLBOX_MODE == "train_and_test" and config.TEST.USE_LAST_EPOCH:
-            print("Testing uses last epoch, validation dataset is not required.", end='\n\n')   
+            logger.info("Testing uses last epoch, validation dataset is not required.", end='\n\n')   
 
         # Create and initialize the test dataloader given the correct toolbox mode,
         # a supported dataset name, and a valid dataset path
@@ -303,4 +305,4 @@ if __name__ == "__main__":
     elif config.TOOLBOX_MODE == "unsupervised_method":
         unsupervised_method_inference(config, data_loader_dict)
     else:
-        print("TOOLBOX_MODE only support train_and_test or only_test or only_test_student!", end='\n\n')
+        logger.info("TOOLBOX_MODE only support train_and_test or only_test or only_test_student!", end='\n\n')
