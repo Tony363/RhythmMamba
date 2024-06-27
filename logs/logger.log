@@ -1,0 +1,438 @@
+[logger|INFO|2024-06-27] Initializing ok.
+[logger|INFO|2024-06-27] Configuration:
+[logger|INFO|2024-06-27] BASE: ['']
+DEVICE: cuda:0
+INFERENCE:
+  BATCH_SIZE: 16
+  EVALUATION_METHOD: FFT
+  EVALUATION_WINDOW:
+    USE_SMALLER_WINDOW: False
+    WINDOW_SIZE: 10
+  MODEL_PATH: PreTrainedModels/UBFC_cross_RhythmMamba.pth
+LOG:
+  PATH: runs/exp/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+MODEL:
+  BIGSMALL:
+    FRAME_DEPTH: 3
+  DROP_RATE: 0.2
+  EFFICIENTPHYS:
+    FRAME_DEPTH: 10
+  MODEL_DIR: ../../../experiment0/user/PreTrainedModels/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+  NAME: RhythmMamba
+  PHYSFORMER:
+    DIM: 96
+    FF_DIM: 144
+    NUM_HEADS: 4
+    NUM_LAYERS: 12
+    PATCH_SIZE: 4
+    THETA: 0.7
+  PHYSNET:
+    FRAME_NUM: 160
+  RESUME: 
+  TSCAN:
+    FRAME_DEPTH: 10
+NUM_OF_GPU_TRAIN: 1
+TEST:
+  DATA:
+    BEGIN: 0.0
+    CACHED_PATH: /home/tony/engagenet_val/processed/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    DATASET: student
+    DATA_FORMAT: NDCHW
+    DATA_PATH: /home/tony/engagenet_val
+    DO_PREPROCESS: True
+    END: 1.0
+    EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    FILE_LIST_PATH: /home/tony/engagenet_val/processed/DataFileLists/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_1.0.csv
+    FILTERING:
+      EXCLUSION_LIST: ['']
+      SELECT_TASKS: False
+      TASK_LIST: ['']
+      USE_EXCLUSION_LIST: False
+    FOLD:
+      FOLD_NAME: 
+      FOLD_PATH: 
+    FS: 30
+    INFO:
+      EXERCISE: [True]
+      GENDER: ['']
+      GLASSER: [True]
+      HAIR_COVER: [True]
+      LIGHT: ['']
+      MAKEUP: [True]
+      MOTION: ['']
+      SKIN_COLOR: [1]
+    PREPROCESS:
+      BIGSMALL:
+        BIG_DATA_TYPE: ['']
+        RESIZE:
+          BIG_H: 144
+          BIG_W: 144
+          SMALL_H: 9
+          SMALL_W: 9
+        SMALL_DATA_TYPE: ['']
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 30
+          USE_MEDIAN_FACE_BOX: False
+        DO_CROP_FACE: True
+        LARGE_BOX_COEF: 1.5
+        USE_LARGE_FACE_BOX: True
+      DATA_AUG: ['None']
+      DATA_TYPE: ['Standardized']
+      DO_CHUNK: True
+      LABEL_TYPE: Standardized
+      MULTI_PROCESS: True
+      RESIZE:
+        H: 128
+        W: 128
+      USE_PSUEDO_PPG_LABEL: False
+  METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
+  OUTPUT_SAVE_DIR: 
+  USE_LAST_EPOCH: False
+TOOLBOX_MODE: only_test_student
+TRAIN:
+  AUG: 0
+  BATCH_SIZE: 16
+  DATA:
+    BEGIN: 0.0
+    CACHED_PATH: ../dataset/UBFC/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    DATASET: UBFC-rPPG
+    DATA_FORMAT: NDCHW
+    DATA_PATH: /experiment0/user/DataSet/UBFC/
+    DO_PREPROCESS: False
+    END: 0.8
+    EXP_DATA_NAME: UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    FILE_LIST_PATH: ../dataset/UBFC/DataFileLists/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_0.8.csv
+    FILTERING:
+      EXCLUSION_LIST: ['']
+      SELECT_TASKS: False
+      TASK_LIST: ['']
+      USE_EXCLUSION_LIST: False
+    FOLD:
+      FOLD_NAME: 
+      FOLD_PATH: 
+    FS: 30
+    INFO:
+      EXERCISE: [True]
+      GENDER: ['']
+      GLASSER: [True]
+      HAIR_COVER: [True]
+      LIGHT: ['']
+      MAKEUP: [True]
+      MOTION: ['']
+      SKIN_COLOR: [1]
+    PREPROCESS:
+      BIGSMALL:
+        BIG_DATA_TYPE: ['']
+        RESIZE:
+          BIG_H: 144
+          BIG_W: 144
+          SMALL_H: 9
+          SMALL_W: 9
+        SMALL_DATA_TYPE: ['']
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 30
+          USE_MEDIAN_FACE_BOX: False
+        DO_CROP_FACE: True
+        LARGE_BOX_COEF: 1.5
+        USE_LARGE_FACE_BOX: True
+      DATA_AUG: ['None']
+      DATA_TYPE: ['Standardized']
+      DO_CHUNK: True
+      LABEL_TYPE: Standardized
+      RESIZE:
+        H: 128
+        W: 128
+      USE_PSUEDO_PPG_LABEL: False
+  EPOCHS: 30
+  LR: 0.0003
+  MODEL_FILE_NAME: UBFC_PURE_RhythmMamba
+  OPTIMIZER:
+    BETAS: (0.9, 0.999)
+    EPS: 0.0001
+    MOMENTUM: 0.9
+UNSUPERVISED:
+  DATA:
+    BEGIN: 0.0
+    CACHED_PATH: PreprocessedData/_SizeW128_SizeH128_ClipLength160_DataType_DataAugNone_LabelType_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_unsupervised
+    DATASET: 
+    DATA_FORMAT: NDCHW
+    DATA_PATH: 
+    DO_PREPROCESS: False
+    END: 1.0
+    EXP_DATA_NAME: _SizeW128_SizeH128_ClipLength160_DataType_DataAugNone_LabelType_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_unsupervised
+    FILE_LIST_PATH: PreprocessedData/DataFileLists/_SizeW128_SizeH128_ClipLength160_DataType_DataAugNone_LabelType_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_unsupervised_0.0_1.0.csv
+    FILTERING:
+      EXCLUSION_LIST: ['']
+      SELECT_TASKS: False
+      TASK_LIST: ['']
+      USE_EXCLUSION_LIST: False
+    FOLD:
+      FOLD_NAME: 
+      FOLD_PATH: 
+    FS: 0
+    INFO:
+      EXERCISE: [True]
+      GENDER: ['']
+      GLASSER: [True]
+      HAIR_COVER: [True]
+      LIGHT: ['']
+      MAKEUP: [True]
+      MOTION: ['']
+      SKIN_COLOR: [1]
+    PREPROCESS:
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 30
+          USE_MEDIAN_FACE_BOX: False
+        DO_CROP_FACE: True
+        LARGE_BOX_COEF: 1.5
+        USE_LARGE_FACE_BOX: True
+      DATA_AUG: ['None']
+      DATA_TYPE: ['']
+      DO_CHUNK: True
+      LABEL_TYPE: 
+      RESIZE:
+        H: 128
+        W: 128
+      USE_PSUEDO_PPG_LABEL: False
+  METHOD: []
+  METRICS: []
+VALID:
+  DATA:
+    BEGIN: 0.8
+    CACHED_PATH: ../dataset/UBFC/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    DATASET: UBFC-rPPG
+    DATA_FORMAT: NDCHW
+    DATA_PATH: /experiment0/user/DataSet/UBFC/
+    DO_PREPROCESS: False
+    END: 1.0
+    EXP_DATA_NAME: UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    FILE_LIST_PATH: ../dataset/UBFC/DataFileLists/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.8_1.0.csv
+    FILTERING:
+      EXCLUSION_LIST: ['']
+      SELECT_TASKS: False
+      TASK_LIST: ['']
+      USE_EXCLUSION_LIST: False
+    FOLD:
+      FOLD_NAME: 
+      FOLD_PATH: 
+    FS: 30
+    INFO:
+      EXERCISE: [True]
+      GENDER: ['']
+      GLASSER: [True]
+      HAIR_COVER: [True]
+      LIGHT: ['']
+      MAKEUP: [True]
+      MOTION: ['']
+      SKIN_COLOR: [1]
+    PREPROCESS:
+      BIGSMALL:
+        BIG_DATA_TYPE: ['']
+        RESIZE:
+          BIG_H: 144
+          BIG_W: 144
+          SMALL_H: 9
+          SMALL_W: 9
+        SMALL_DATA_TYPE: ['']
+      CHUNK_LENGTH: 160
+      CROP_FACE:
+        DETECTION:
+          DO_DYNAMIC_DETECTION: False
+          DYNAMIC_DETECTION_FREQUENCY: 30
+          USE_MEDIAN_FACE_BOX: False
+        DO_CROP_FACE: True
+        LARGE_BOX_COEF: 1.5
+        USE_LARGE_FACE_BOX: True
+      DATA_AUG: ['None']
+      DATA_TYPE: ['Standardized']
+      DO_CHUNK: True
+      LABEL_TYPE: Standardized
+      RESIZE:
+        H: 128
+        W: 128
+      USE_PSUEDO_PPG_LABEL: False
+[logger|INFO|2024-06-27] Preprocessing dataset...
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-06-27] ERROR: No Face Detected

@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 from dataset.data_loader.BaseLoader import BaseLoader
 from tqdm import tqdm
+from utils import logger
 
 
 class StudentLoader(BaseLoader):
@@ -33,9 +34,23 @@ class StudentLoader(BaseLoader):
 
         """
         super().__init__(name, data_path, config_data)
+        self.inputs = self.get_raw_data(self.raw_data_path)
+        
+    
+    def preprocess_video(
+        self, 
+        vid_path:str,
+        config_preprocess:dict
+    )->np.ndarray:
+        frames = self.read_video(vid_path)
+        bvps = np.ones(frames.shape[0])
+        frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
+        return frames_clips,bvps_clips
+    
         
     def __getitem__(self, index):
         """Returns a clip of video(3,T,W,H) and it's corresponding signals(T)."""
+        # data,bvps_clips = self.preprocess_video(self.inputs[index],self.config_data.PREPROCESS)
         data = np.load(self.inputs[index])
         # label = np.load(self.labels[index])
         if self.data_format == 'NDCHW':
