@@ -1,6 +1,6 @@
-[logger|INFO|2024-06-27] Initializing ok.
-[logger|INFO|2024-06-27] Configuration:
-[logger|INFO|2024-06-27] BASE: ['']
+[logger|INFO|2024-06-28] Initializing ok.
+[logger|INFO|2024-06-28] Configuration:
+[logger|INFO|2024-06-28] BASE: ['']
 DEVICE: cuda:0
 INFERENCE:
   BATCH_SIZE: 16
@@ -8,7 +8,7 @@ INFERENCE:
   EVALUATION_WINDOW:
     USE_SMALLER_WINDOW: False
     WINDOW_SIZE: 10
-  MODEL_PATH: PreTrainedModels/UBFC_cross_RhythmMamba.pth
+  MODEL_PATH: /home/tony/RhythmMamba/PreTrainedModels/MMPD_intra_RhythmMamba.pth
 LOG:
   PATH: runs/exp/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
 MODEL:
@@ -39,7 +39,7 @@ TEST:
     DATASET: student
     DATA_FORMAT: NDCHW
     DATA_PATH: /home/tony/engagenet_val
-    DO_PREPROCESS: True
+    DO_PREPROCESS: False
     END: 1.0
     EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
     FILE_LIST_PATH: /home/tony/engagenet_val/processed/DataFileLists/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_1.0.csv
@@ -83,7 +83,7 @@ TEST:
       DATA_TYPE: ['Standardized']
       DO_CHUNK: True
       LABEL_TYPE: Standardized
-      MULTI_PROCESS: True
+      MULTI_PROCESS: False
       RESIZE:
         H: 128
         W: 128
@@ -260,179 +260,177 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-06-27] Preprocessing dataset...
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
-[logger|INFO|2024-06-27] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-06-27] ERROR: No Face Detected
+[logger|INFO|2024-06-28] Cached Data Path /home/tony/engagenet_val/processed/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+[logger|INFO|2024-06-28] File List Path /home/tony/engagenet_val/processed/DataFileLists/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_1.0.csv
+[logger|INFO|2024-06-28]  test Preprocessed Dataset Length: 13432
+[logger|INFO|2024-06-28] 
+[logger|INFO|2024-06-28] ===Student_Testing===
+[logger|INFO|2024-06-28] LOADED MODEL
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.21.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.22.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.13.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.16.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.7.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.0.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.4.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.8.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.15.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.23.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.14.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.2.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.3.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.D_b
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.6.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.12.attn.mamba.conv1d_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.17.attn.mamba.dt_proj_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.20.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.10.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.18.attn.mamba.conv1d_b.bias
+[logger|INFO|2024-06-28] layer not found module.blocks.5.attn.mamba.A_b_log
+[logger|INFO|2024-06-28] layer not found module.blocks.9.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.11.attn.mamba.dt_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.19.attn.mamba.x_proj_b.weight
+[logger|INFO|2024-06-28] layer not found module.blocks.1.attn.mamba.A_b_log

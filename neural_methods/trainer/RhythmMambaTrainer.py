@@ -185,7 +185,11 @@ class RhythmMambaTrainer(BaseTrainer):
         if self.config.TOOLBOX_MODE == "only_test" or self.config.TOOLBOX_MODE == "only_test_student":
             if not os.path.exists(self.config.INFERENCE.MODEL_PATH):
                 raise ValueError("Inference model path error! Please check INFERENCE.MODEL_PATH in your yaml.")
-            self.model.load_state_dict(torch.load(self.config.INFERENCE.MODEL_PATH))
+            logger.info("LOADED MODEL")
+            ckpt = torch.load(self.config.INFERENCE.MODEL_PATH)
+            for layer_name in list(set(self.model.state_dict().keys()) - set(ckpt)):
+                logger.info(f"layer not found {layer_name}")
+            self.model.load_state_dict(ckpt)
             logger.info("Testing uses pretrained model!")
         else:
             if self.config.TEST.USE_LAST_EPOCH:

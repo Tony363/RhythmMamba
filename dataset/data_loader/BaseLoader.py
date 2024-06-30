@@ -64,26 +64,26 @@ class BaseLoader(Dataset):
         assert (config_data.BEGIN > 0 or config_data.BEGIN == 0)
         assert (config_data.END < 1 or config_data.END == 1)
         
-        if not config_data.DO_PREPROCESS and  config_data.DATASET == "student":
-            return
+        # if not config_data.DO_PREPROCESS and  config_data.DATASET == "student":
+        #     return
         
         if config_data.DO_PREPROCESS:
             self.raw_data_dirs = self.get_raw_data(self.raw_data_path)
             self.preprocess_dataset(self.raw_data_dirs, config_data.PREPROCESS, config_data.BEGIN, config_data.END)
         else:
             if not os.path.exists(self.cached_path):
-                logger.info('CACHED_PATH:', self.cached_path)
+                logger.info(f"CACHED_PATH: {self.cached_path}")
                 raise ValueError(self.dataset_name,
                                 'Please set DO_PREPROCESS to True. Preprocessed directory does not exist!')
             if not os.path.exists(self.file_list_path):
                 logger.info('File list does not exist... generating now...')
                 self.raw_data_dirs = self.get_raw_data(self.raw_data_path)
                 self.build_file_list_retroactive(self.raw_data_dirs, config_data.BEGIN, config_data.END)
-                logger.info('File list generated.', end='\n\n')
+                logger.info('File list generated.')
             self.load_preprocessed_data()
-        logger.info('Cached Data Path', self.cached_path, end='\n\n')
-        logger.info('File List Path', self.file_list_path)
-        logger.info(f" {self.dataset_name} Preprocessed Dataset Length: {self.preprocessed_data_len}", end='\n\n')
+        logger.info(f"Cached Data Path {self.cached_path}")
+        logger.info(f'File List Path {self.file_list_path}')
+        logger.info(f" {self.dataset_name} Preprocessed Dataset Length: {self.preprocessed_data_len}")
 
     def __len__(self):
         """Returns the length of the dataset."""
@@ -214,7 +214,7 @@ class BaseLoader(Dataset):
             file_list_dict = self.seq_list_dict(data_dirs,config_preprocess)
         self.build_file_list(file_list_dict)  # build file list
         self.load_preprocessed_data()  # load all data and corresponding labels (sorted for consistency)
-        logger.info("Total Number of raw files preprocessed:", len(data_dirs_split), end='\n\n')
+        logger.info(f"Total Number of raw files preprocessed: {len(data_dirs_split)}")
 
     def seq_list_dict(
         self,

@@ -240,7 +240,7 @@ if __name__ == "__main__":
                              SCAMPS, BP4D+ (Normal and BigSmall preprocessing), and UBFC-PHYS.")
         
         if config.TOOLBOX_MODE == "train_and_test" and config.TEST.USE_LAST_EPOCH:
-            logger.info("Testing uses last epoch, validation dataset is not required.", end='\n\n')   
+            logger.info("Testing uses last epoch, validation dataset is not required.")   
 
         # Create and initialize the test dataloader given the correct toolbox mode,
         # a supported dataset name, and a valid dataset path

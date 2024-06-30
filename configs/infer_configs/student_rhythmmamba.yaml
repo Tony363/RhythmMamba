@@ -65,7 +65,7 @@ TEST:
   DATA:
     FS: 30
     DATASET: student
-    DO_PREPROCESS: True                # if first time, should be true
+    DO_PREPROCESS: False                # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH:  "/home/tony/engagenet_val" #"/experiment0/user/DataSet/PURE/"          # Raw dataset path, need to be updated
     CACHED_PATH: "/home/tony/engagenet_val/processed"    # Processed dataset save path, need to be updated
@@ -73,7 +73,7 @@ TEST:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      MULTI_PROCESS: True
+      MULTI_PROCESS: False
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True
@@ -103,5 +103,5 @@ INFERENCE:
   EVALUATION_WINDOW:
     USE_SMALLER_WINDOW: False        # Change this if you'd like an evaluation window smaller than the test video length
     WINDOW_SIZE: 10        # In seconds
-  MODEL_PATH:   "PreTrainedModels/UBFC_cross_RhythmMamba.pth"
+  MODEL_PATH:   "/home/tony/RhythmMamba/PreTrainedModels/MMPD_intra_RhythmMamba.pth"
                   
