@@ -12,6 +12,8 @@ from neural_methods import trainer
 from unsupervised_methods.unsupervised_predictor import unsupervised_predict
 from torch.utils.data import DataLoader
 import os 
+from utils import logger
+
 
 RANDOM_SEED = 100
 torch.manual_seed(RANDOM_SEED)
@@ -88,8 +90,13 @@ def test(config, data_loader_dict):
         model_trainer = trainer.RhythmMambaTrainer.RhythmMambaTrainer(config, data_loader_dict)
     else:
         raise ValueError('Your Model is Not Supported  Yet!')
-    model_trainer.test(data_loader_dict)
-
+    
+    predictions = model_trainer.test(data_loader_dict)
+    if predictions is not None:
+        torch.save(
+            predictions, 
+            os.path.join(config.TEST.DATA.DATA_PATH,'rppg','tensor_dict_nopreprocess.pth')
+        )
 
 def unsupervised_method_inference(config, data_loader):
     if not config.UNSUPERVISED.METHOD:
@@ -111,6 +118,20 @@ def unsupervised_method_inference(config, data_loader):
             raise ValueError("Not supported unsupervised method!")
 
 
+def student_collate_fn(
+    batches:list,
+)->tuple[torch.tensor,torch.tensor,list,list]:
+    processed_batches = os.listdir(batches[0])
+    to_load,vids = [],[]
+    for file in processed_batches[:min(len(processed_batches), 128)]:
+        to_load.append(os.path.join(batches[0],file))
+        vids.append(file.split('_')[-1].split('.npy')[0])
+    batch = torch.stack([torch.from_numpy(np.load(file)) for file in to_load])
+    for file in to_load:
+        os.remove(file)
+    to_load = ['_'.join(path.split('_')[:-1]) for path in to_load]
+    return batch,torch.ones(len(to_load)),to_load,vids
+
 if __name__ == "__main__":
     #os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
     # parse arguments.
@@ -122,8 +143,8 @@ if __name__ == "__main__":
 
     # configurations.
     config = get_config(args)
-    print('Configuration:')
-    print(config, end='\n\n')
+    logger.info('Configuration:')
+    logger.info(config)
 
     data_loader_dict = dict()
     if config.TOOLBOX_MODE == "train_and_test":
@@ -211,7 +232,7 @@ if __name__ == "__main__":
         else:
             data_loader_dict['valid'] = None
 
-    if config.TOOLBOX_MODE == "train_and_test" or config.TOOLBOX_MODE == "only_test":
+    if config.TOOLBOX_MODE == "train_and_test" or config.TOOLBOX_MODE == "only_test" or config.TOOLBOX_MODE == "only_test_student":
         # test_loader
         if config.TEST.DATA.DATASET == "COHFACE":
             # test_loader = data_loader.COHFACELoader.COHFACELoader
@@ -230,12 +251,14 @@ if __name__ == "__main__":
             test_loader = data_loader.BP4DPlusBigSmallLoader.BP4DPlusBigSmallLoader
         elif config.TEST.DATA.DATASET == "UBFC-PHYS":
             test_loader = data_loader.UBFCPHYSLoader.UBFCPHYSLoader
+        elif config.TEST.DATA.DATASET == "student":
+            test_loader = data_loader.student_loader.StudentLoader
         else:
             raise ValueError("Unsupported dataset! Currently supporting UBFC-rPPG, PURE, MMPD, \
                              SCAMPS, BP4D+ (Normal and BigSmall preprocessing), and UBFC-PHYS.")
         
         if config.TOOLBOX_MODE == "train_and_test" and config.TEST.USE_LAST_EPOCH:
-            print("Testing uses last epoch, validation dataset is not required.", end='\n\n')   
+            logger.info("Testing uses last epoch, validation dataset is not required.", end='\n\n')   
 
         # Create and initialize the test dataloader given the correct toolbox mode,
         # a supported dataset name, and a valid dataset path
@@ -246,10 +269,13 @@ if __name__ == "__main__":
                 config_data=config.TEST.DATA)
             data_loader_dict["test"] = DataLoader(
                 dataset=test_data,
-                num_workers=16,
+                num_workers=1,
+                pin_memory=True,
                 batch_size=config.INFERENCE.BATCH_SIZE,
                 shuffle=False,
                 worker_init_fn=seed_worker,
+                prefetch_factor=1,
+                collate_fn=student_collate_fn if config.TEST.DATA.DATASET == "student" else None,
                 generator=general_generator
             )
         else:
@@ -294,9 +320,9 @@ if __name__ == "__main__":
 
     if config.TOOLBOX_MODE == "train_and_test":
         train_and_test(config, data_loader_dict)
-    elif config.TOOLBOX_MODE == "only_test":
+    elif config.TOOLBOX_MODE == "only_test" or config.TOOLBOX_MODE == "only_test_student":
         test(config, data_loader_dict)
     elif config.TOOLBOX_MODE == "unsupervised_method":
         unsupervised_method_inference(config, data_loader_dict)
     else:
-        print("TOOLBOX_MODE only support train_and_test or only_test !", end='\n\n')
+        logger.info("TOOLBOX_MODE only support train_and_test or only_test !", end='\n\n')
