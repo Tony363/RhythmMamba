@@ -106,17 +106,27 @@ class StudentLoader(BaseLoader):
     
     def get_raw_data(self, data_path):
         """Returns data directories under the path(For UBFC-rPPG dataset)."""
-        data_dirs = sorted(glob.glob(data_path + os.sep + "subject*"))
+        processed = []
+        if os.path.exists(data_path.split('videos')[0] + os.sep + "processed_list.txt"):
+            with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "r") as f:
+                processed = f.readlines()
+        data_dirs = [
+            path 
+            for path in sorted(glob.glob(data_path + os.sep + "subject*"))
+            if path not in processed
+        ]
         if not data_dirs:
             raise ValueError(self.dataset_name + " data paths empty!")
+
         dirs = [
             {
             "index": idx,
             "path": data_dir
             } 
-            for idx,data_dir in enumerate(data_dirs)
-            if "subject_122_g0eklav32n_vid_1_34.mp4" not in data_dir or "subject_74_65ovfrvz97_vid_2_31.mp4" not in data_dir
+            for idx,data_dir in enumerate(data_dirs[:3000])
         ]
+        with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "a") as f:
+            f.write("\n".join(data_dirs))
         return dirs
 
     def split_raw_data(self, data_dirs, begin, end):
@@ -150,9 +160,9 @@ class StudentLoader(BaseLoader):
             os.makedirs(self.cached_path, exist_ok=True)
         count = 0
         input_path_name_list = []
-        logger.info(f"FC - {frames_clips.shape} BC - {bvps_clips.shape}")
+        # logger.info(f"FC - {frames_clips.shape} BC - {bvps_clips.shape}")
         for i in range(len(bvps_clips)):
-            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
+            input_path_name = self.cached_path + os.sep + "{}_{}.npy".format(filename, str(count))
             input_path_name_list.append(input_path_name)
             with lock:
                 np.save(input_path_name, frames_clips[i])
@@ -176,7 +186,7 @@ class StudentLoader(BaseLoader):
         input_path_name_list = []
         for i in range(len(bvps_clips)):
             assert (len(self.inputs) == len(self.labels))
-            input_path_name = self.cached_path + os.sep + "{0}_input{1}.npy".format(filename, str(count))
+            input_path_name = self.cached_path + os.sep + "{0}_input_{1}.npy".format(filename, str(count))
             input_path_name_list.append(input_path_name)
             np.save(input_path_name, frames_clips[i])
             count += 1
@@ -210,7 +220,8 @@ class StudentLoader(BaseLoader):
         """ 
         invoked by preprocess_dataset for multi_process.
         """
-        saved_filename = data_dirs[i]['index']
+        saved_filename = data_dirs[i]['path'].split(os.sep)[-1].replace('.mp4','')
+        # logger.info(f"SAVED FILENAME - {data_dirs[i]}")
         # Read Frames
         frames = self.read_video(data_dirs[i]['path'])
         bvps = np.ones(frames.shape[0])

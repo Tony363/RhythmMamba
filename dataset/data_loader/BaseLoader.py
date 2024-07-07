@@ -15,7 +15,7 @@ from scipy import sparse
 from unsupervised_methods.methods import POS_WANG
 from unsupervised_methods import utils
 import math
-from multiprocessing import Pool, Process, Value, Array, Manager
+from multiprocessing import Pool, Process, Value, Array, Manager,Lock
 
 import cv2
 import numpy as np
@@ -64,7 +64,7 @@ class BaseLoader(Dataset):
         assert (config_data.BEGIN > 0 or config_data.BEGIN == 0)
         assert (config_data.END < 1 or config_data.END == 1)
         
-        if config_data.DATASET == "student":
+        if config_data.DATASET == "student" and not config_data.DO_PREPROCESS:
             self.inputs = self.get_raw_data(self.raw_data_path)
             self.unprocessed_inputs = len(self.inputs) - 1
             return
@@ -438,6 +438,7 @@ class BaseLoader(Dataset):
         pbar = tqdm(list(choose_range))
 
         # shared data resource
+        lock = Lock()
         manager = Manager()  # multi-process manager
         file_list_dict = manager.dict()  # dictionary for all processes to store processed files
         p_list = []  # list of processes
@@ -450,7 +451,7 @@ class BaseLoader(Dataset):
                 if running_num < multi_process_quota:  # in case of too many processes
                     # send data to be preprocessing task
                     p = Process(target=self.preprocess_dataset_subprocess, 
-                                args=(data_dirs,config_preprocess, i, file_list_dict))
+                                args=(data_dirs,config_preprocess, i, file_list_dict,lock))
                     p.start()
                     p_list.append(p)
                     running_num += 1

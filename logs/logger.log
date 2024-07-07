@@ -1,7 +1,7 @@
-[logger|INFO|2024-07-03] Initializing ok.
-[logger|INFO|2024-07-03] Configuration:
-[logger|INFO|2024-07-03] BASE: ['']
-DEVICE: cuda:1
+[logger|INFO|2024-07-07] Initializing ok.
+[logger|INFO|2024-07-07] Configuration:
+[logger|INFO|2024-07-07] BASE: ['']
+DEVICE: cuda:0
 INFERENCE:
   BATCH_SIZE: 16
   EVALUATION_METHOD: FFT
@@ -39,7 +39,7 @@ TEST:
     DATASET: student
     DATA_FORMAT: NDCHW
     DATA_PATH: /home/tony/engagenet_train/videos
-    DO_PREPROCESS: False
+    DO_PREPROCESS: True
     END: 1.0
     EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
     FILE_LIST_PATH: /home/tony/engagenet_train/preprocess_mamba/DataFileLists/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_1.0.csv
@@ -259,50 +259,51 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-07-03] 
-[logger|INFO|2024-07-03] ===Student_Testing===
-[logger|INFO|2024-07-03] LOADED MODEL
-[logger|INFO|2024-07-03] Testing uses pretrained model!
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_0.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_1.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_10.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_11.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] ERROR: No Face Detected
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_13.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_14.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_15.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_16.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_17.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_18.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_19.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_2.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_20.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] ERROR: No Face Detected
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_21.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_22.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_23.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] TEST DEVICES - cuda:1 [1]
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_24.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_25.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_26.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
-[logger|INFO|2024-07-03] /home/tony/engagenet_train/videos/subject_0_2msdhgqawh_vid_0_27.mp4
-[logger|INFO|2024-07-03] DATA SHAPE - (1, 160, 3, 128, 128)
+[logger|INFO|2024-07-07] Preprocessing dataset...
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)

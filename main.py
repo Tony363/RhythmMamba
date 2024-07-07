@@ -123,7 +123,7 @@ def student_collate_fn(
 )->tuple[torch.tensor,torch.tensor,list,list]:
     processed_batches = os.listdir(batches[0])
     to_load,vids = [],[]
-    for file in processed_batches[:min(len(processed_batches), 128)]:
+    for file in processed_batches[:min(len(processed_batches), 64)]:
         to_load.append(os.path.join(batches[0],file))
         vids.append(file.split('_')[-1].split('.npy')[0])
     batch = torch.stack([torch.from_numpy(np.load(file)) for file in to_load])
@@ -133,7 +133,7 @@ def student_collate_fn(
     return batch,torch.ones(len(to_load)),to_load,vids
 
 if __name__ == "__main__":
-    #os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "1"
     # parse arguments.
     parser = argparse.ArgumentParser()
     parser = add_args(parser)
@@ -275,7 +275,7 @@ if __name__ == "__main__":
                 shuffle=False,
                 worker_init_fn=seed_worker,
                 prefetch_factor=1,
-                collate_fn=student_collate_fn if config.TEST.DATA.DATASET == "student" else None,
+                collate_fn=student_collate_fn if config.TEST.DATA.DATASET == "student" and config.TEST.DATA.DOPREPROCESS else None,
                 generator=general_generator
             )
         else:
