@@ -83,6 +83,7 @@ TEST:
       DATA_TYPE: ['Standardized']
       DO_CHUNK: True
       LABEL_TYPE: Standardized
+      MULTI_PROCESS: False
       RESIZE:
         H: 128
         W: 128
@@ -259,7 +260,6 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-07-07] Preprocessing dataset...
 [logger|INFO|2024-07-07] ERROR: No Face Detected
 [logger|INFO|2024-07-07] ERROR: No Face Detected
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
@@ -269,41 +269,4 @@ VALID:
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
 [logger|INFO|2024-07-07] ERROR: No Face Detected
 [logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)

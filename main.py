@@ -133,13 +133,13 @@ def student_collate_fn(
     return batch,torch.ones(len(to_load)),to_load,vids
 
 if __name__ == "__main__":
-    os.environ["CUDA_VISIBLE_DEVICES"] = "1"
     # parse arguments.
     parser = argparse.ArgumentParser()
     parser = add_args(parser)
     parser = trainer.BaseTrainer.BaseTrainer.add_trainer_args(parser)
     parser = data_loader.BaseLoader.BaseLoader.add_data_loader_args(parser)
     args = parser.parse_args()
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.DEVICE.split(':')[-1]
 
     # configurations.
     config = get_config(args)

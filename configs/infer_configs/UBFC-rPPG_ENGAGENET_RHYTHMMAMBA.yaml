@@ -82,6 +82,7 @@ TEST:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
+      MULTI_PROCESS: False
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True
