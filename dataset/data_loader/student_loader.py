@@ -46,7 +46,7 @@ class StudentLoader(BaseLoader):
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
         return frames_clips,bvps_clips
     
-    def __getitem__(self, index):
+    def _getitem__(self, index):
         """Returns a clip of video(3,T,W,H) and it's corresponding signals(T)."""
         item_path = self.inputs[index]["path"]
         data,_= self.preprocess_video(item_path,self.config_data.PREPROCESS)
@@ -73,7 +73,7 @@ class StudentLoader(BaseLoader):
         
         return self.config_data.CACHED_PATH
     
-    def _getitem__(self, index):
+    def __getitem__(self, index):
         """Returns a clip of video(3,T,W,H) and it's corresponding signals(T)."""
         data = np.load(self.inputs[index])
         # label = np.load(self.labels[index])
@@ -94,14 +94,18 @@ class StudentLoader(BaseLoader):
         # item_path_filename is simply the filename of the specific clip
         # For example, the preceding item_path's filename would be 501_input0.npy
         item_path_filename = item_path.split(os.sep)[-1]
+        
         # split_idx represents the point in the previous filename where we want to split the string 
         # in order to retrieve a more precise filename (e.g., 501) preceding the chunk (e.g., input0)
-        split_idx = item_path_filename.rindex('_')
+        # split_idx = item_path_filename.rindex('_')
+        
         # Following the previous comments, the filename for example would be 501
-        filename = item_path_filename[:split_idx]
+        # filename = item_path_filename[:split_idx]
+        filename = item_path_filename
         # chunk_id is the extracted, numeric chunk identifier. Following the previous comments, 
         # the chunk_id for example would be 0
-        chunk_id = item_path_filename[split_idx + 6:].split('.')[0]
+        # chunk_id = item_path_filename[split_idx + 6:].split('.')[0]
+        chunk_id = filename.split('_')[-1].split('.npy')[0]
         return data, 1, filename, chunk_id
     
     def get_raw_data(self, data_path):
@@ -118,12 +122,13 @@ class StudentLoader(BaseLoader):
         if not data_dirs:
             raise ValueError(self.dataset_name + " data paths empty!")
 
+        data_dirs = data_dirs[:1000]
         dirs = [
             {
             "index": idx,
             "path": data_dir
             } 
-            for idx,data_dir in enumerate(data_dirs[:3000])
+            for idx,data_dir in enumerate(data_dirs)
         ]
         with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "a") as f:
             f.write("\n".join(data_dirs))

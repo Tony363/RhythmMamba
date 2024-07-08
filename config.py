@@ -157,6 +157,7 @@ _C.TEST.METRICS = []
 _C.TEST.USE_LAST_EPOCH = True
 # Test.Data settings
 _C.TEST.DATA = CN()
+_C.TEST.DATA.SAVE_PATH = None
 _C.TEST.DATA.INFO = CN()
 _C.TEST.DATA.INFO.LIGHT = ['']
 _C.TEST.DATA.INFO.MOTION = ['']
@@ -457,7 +458,11 @@ def update_config(config, args):
         config.TEST.DATA.CACHED_PATH = os.path.join(config.TEST.DATA.CACHED_PATH, config.TEST.DATA.EXP_DATA_NAME)
 
     name, ext = os.path.splitext(config.TEST.DATA.FILE_LIST_PATH)
-    if not ext: # no file extension
+    
+    if config.TOOLBOX_MODE == "only_test_student":
+        file_count = len(os.listdir(config.TEST.DATA.SAVE_PATH))//2 + 1
+        config.TEST.DATA.FILE_LIST_PATH = os.path.join("/".join(config.TEST.DATA.SAVE_PATH.split(os.sep)[:-1]),f"signal_info_{file_count}.csv")
+    elif not ext and config.TOOLBOX_MODE != "only_test_student": # no file extension
         FOLD_STR = '_' + config.TEST.DATA.FOLD.FOLD_NAME if config.TEST.DATA.FOLD.FOLD_NAME else ''
         config.TEST.DATA.FILE_LIST_PATH = os.path.join(config.TEST.DATA.FILE_LIST_PATH, \
                                                        config.TEST.DATA.EXP_DATA_NAME + '_' + \

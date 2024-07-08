@@ -212,7 +212,6 @@ class RhythmMambaTrainer(BaseTrainer):
                 batch_size = test_batch[0].shape[0]
                 chunk_len = self.chunk_len
                 data_test = test_batch[0].to(self.config.DEVICE)
-                logger.info(f"TEST DEVICES - {data_test.device} {self.model.device_ids}")
                 pred_ppg_test = self.model(data_test)
                 pred_ppg_test = (pred_ppg_test-torch.mean(pred_ppg_test, axis=-1).view(-1, 1))/torch.std(pred_ppg_test, axis=-1).view(-1, 1)    # normalize
                 pred_ppg_test = pred_ppg_test.view( -1 , 1)

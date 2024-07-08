@@ -42,7 +42,7 @@ TEST:
     DO_PREPROCESS: True
     END: 1.0
     EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
-    FILE_LIST_PATH: /home/tony/engagenet_train/preprocess_mamba/DataFileLists/student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse_0.0_1.0.csv
+    FILE_LIST_PATH: /home/tony/engagenet_train/rppg/signal_info_4.csv
     FILTERING:
       EXCLUSION_LIST: ['']
       SELECT_TASKS: False
@@ -83,11 +83,12 @@ TEST:
       DATA_TYPE: ['Standardized']
       DO_CHUNK: True
       LABEL_TYPE: Standardized
-      MULTI_PROCESS: False
+      MULTI_PROCESS: True
       RESIZE:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
+    SAVE_PATH: /home/tony/engagenet_train/rppg/
   METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
   OUTPUT_SAVE_DIR: 
   USE_LAST_EPOCH: False
@@ -260,13 +261,10 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
+[logger|INFO|2024-07-07] Preprocessing dataset...
 [logger|INFO|2024-07-07] ERROR: No Face Detected
 [logger|INFO|2024-07-07] ERROR: No Face Detected
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
 [logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
 [logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)

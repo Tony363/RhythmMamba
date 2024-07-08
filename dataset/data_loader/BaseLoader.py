@@ -216,7 +216,7 @@ class BaseLoader(Dataset):
             file_list_dict = self.seq_list_dict(data_dirs,config_preprocess)
         self.build_file_list(file_list_dict)  # build file list
         self.load_preprocessed_data()  # load all data and corresponding labels (sorted for consistency)
-        logger.info("Total Number of raw files preprocessed:", len(data_dirs_split), end='\n\n')
+        logger.info(f"Total Number of raw files preprocessed: {len(data_dirs_split)}")
 
     def preprocess(self, frames, bvps, config_preprocess):
         """Preprocesses a pair of data.
@@ -425,7 +425,7 @@ class BaseLoader(Dataset):
             count += 1
         return input_path_name_list, label_path_name_list
 
-    def multi_process_manager(self, data_dirs, config_preprocess, multi_process_quota=8):
+    def multi_process_manager(self, data_dirs, config_preprocess, multi_process_quota=2):
         """Allocate dataset preprocessing across multiple processes.
 
         Args:

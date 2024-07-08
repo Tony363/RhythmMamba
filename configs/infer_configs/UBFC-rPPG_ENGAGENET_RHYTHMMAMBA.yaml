@@ -78,11 +78,12 @@ TEST:
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/tony/engagenet_train/videos"          # Raw dataset path, need to be updated
     CACHED_PATH: "/home/tony/engagenet_train/preprocess_mamba"   # Processed dataset save path, need to be updated
+    SAVE_PATH: "/home/tony/engagenet_train/rppg/"   # Processed dataset save path, need to be updated
     EXP_DATA_NAME: ""
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      MULTI_PROCESS: False
+      MULTI_PROCESS: True
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True

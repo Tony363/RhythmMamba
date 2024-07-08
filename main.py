@@ -93,9 +93,10 @@ def test(config, data_loader_dict):
     
     predictions = model_trainer.test(data_loader_dict)
     if predictions is not None:
+        file_count = len(os.listdir(config.TEST.DATA.SAVE_PATH))//2 + 1
         torch.save(
             predictions, 
-            os.path.join(config.TEST.DATA.DATA_PATH,'rppg','tensor_dict_nopreprocess.pth')
+            os.path.join(config.TEST.DATA.SAVE_PATH,f"signals_{file_count}.pt")
         )
 
 def unsupervised_method_inference(config, data_loader):
@@ -139,10 +140,10 @@ if __name__ == "__main__":
     parser = trainer.BaseTrainer.BaseTrainer.add_trainer_args(parser)
     parser = data_loader.BaseLoader.BaseLoader.add_data_loader_args(parser)
     args = parser.parse_args()
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.DEVICE.split(':')[-1]
 
     # configurations.
     config = get_config(args)
+    os.environ["CUDA_VISIBLE_DEVICES"] = config.DEVICE.split(':')[-1]
     logger.info('Configuration:')
     logger.info(config)
 
@@ -275,7 +276,7 @@ if __name__ == "__main__":
                 shuffle=False,
                 worker_init_fn=seed_worker,
                 prefetch_factor=1,
-                collate_fn=student_collate_fn if config.TEST.DATA.DATASET == "student" and config.TEST.DATA.DOPREPROCESS else None,
+                collate_fn=student_collate_fn if config.TEST.DATA.DATASET == "student" and not config.TEST.DATA.DO_PREPROCESS else None,
                 generator=general_generator
             )
         else:
