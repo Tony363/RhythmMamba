@@ -143,7 +143,7 @@ if __name__ == "__main__":
 
     # configurations.
     config = get_config(args)
-    os.environ["CUDA_VISIBLE_DEVICES"] = config.DEVICE.split(':')[-1]
+    os.environ["CUDA_VISIBLE_DEVICES"] = "1"#f"{config.DEVICE.split(':')[-1]}"
     logger.info('Configuration:')
     logger.info(config)
 

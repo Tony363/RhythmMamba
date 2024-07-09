@@ -1,6 +1,6 @@
-[logger|INFO|2024-07-07] Initializing ok.
-[logger|INFO|2024-07-07] Configuration:
-[logger|INFO|2024-07-07] BASE: ['']
+[logger|INFO|2024-07-09] Initializing ok.
+[logger|INFO|2024-07-09] Configuration:
+[logger|INFO|2024-07-09] BASE: ['']
 DEVICE: cuda:0
 INFERENCE:
   BATCH_SIZE: 16
@@ -42,7 +42,7 @@ TEST:
     DO_PREPROCESS: True
     END: 1.0
     EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
-    FILE_LIST_PATH: /home/tony/engagenet_train/rppg/signal_info_4.csv
+    FILE_LIST_PATH: /home/tony/engagenet_train/rppg/signal_info_1.csv
     FILTERING:
       EXCLUSION_LIST: ['']
       SELECT_TASKS: False
@@ -261,10 +261,8 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-07-07] Preprocessing dataset...
-[logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] ERROR: No Face Detected
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-07] ERROR: No Face Detected
+[logger|INFO|2024-07-09] Preprocessing dataset...
+[logger|INFO|2024-07-09] ERROR: No Face Detected
+[logger|INFO|2024-07-09] ERROR: No Face Detected
+[logger|INFO|2024-07-09] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-09] Warning: More than one faces are detected(Only cropping the biggest one.)

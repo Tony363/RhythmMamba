@@ -113,11 +113,11 @@ class StudentLoader(BaseLoader):
         processed = []
         if os.path.exists(data_path.split('videos')[0] + os.sep + "processed_list.txt"):
             with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "r") as f:
-                processed = f.readlines()
+                processed = [path.split(".mp4")[0].replace('\n','') for path in f.readlines()]
         data_dirs = [
             path 
             for path in sorted(glob.glob(data_path + os.sep + "subject*"))
-            if path not in processed
+            if path.split('.mp4')[0] not in processed
         ]
         if not data_dirs:
             raise ValueError(self.dataset_name + " data paths empty!")
@@ -131,7 +131,7 @@ class StudentLoader(BaseLoader):
             for idx,data_dir in enumerate(data_dirs)
         ]
         with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "a") as f:
-            f.write("\n".join(data_dirs))
+            f.write("\n".join(data_dirs)+'\n')
         return dirs
 
     def split_raw_data(self, data_dirs, begin, end):
