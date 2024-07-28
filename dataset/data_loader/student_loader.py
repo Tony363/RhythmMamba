@@ -75,6 +75,7 @@ class StudentLoader(BaseLoader):
     
     def __getitem__(self, index):
         """Returns a clip of video(3,T,W,H) and it's corresponding signals(T)."""
+        logger.info(f" WTF {self.inputs[index]}")
         data = np.load(self.inputs[index])
         # label = np.load(self.labels[index])
         data = np.float32(data)
@@ -111,8 +112,9 @@ class StudentLoader(BaseLoader):
     def get_raw_data(self, data_path):
         """Returns data directories under the path(For UBFC-rPPG dataset)."""
         processed = []
-        if os.path.exists(data_path.split('videos')[0] + os.sep + "processed_list.txt"):
-            with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "r") as f:
+        cache_records = 'rppg_mamba' if 'mamba' in self.cached_path else 'rppg_former'
+        if os.path.exists(data_path.split('videos')[0] + os.sep + cache_records + os.sep + "processed_list.txt"):
+            with open(data_path.split('videos')[0] + os.sep + cache_records + os.sep + "processed_list.txt", "r") as f:
                 processed = [path.split(".mp4")[0].replace('\n','') for path in f.readlines()]
         data_dirs = [
             path 
@@ -130,7 +132,7 @@ class StudentLoader(BaseLoader):
             } 
             for idx,data_dir in enumerate(data_dirs)
         ]
-        with open(data_path.split('videos')[0] + os.sep + "processed_list.txt", "a") as f:
+        with open(data_path.split('videos')[0] + os.sep + cache_records + os.sep + "processed_list.txt", "a") as f:
             f.write("\n".join(data_dirs)+'\n')
         return dirs
 

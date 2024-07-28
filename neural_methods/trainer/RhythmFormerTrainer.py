@@ -10,6 +10,7 @@ from evaluation.metrics import calculate_metrics
 from neural_methods.model.RhythmFormer import RhythmFormer
 from neural_methods.trainer.BaseTrainer import BaseTrainer
 from neural_methods.loss.TorchLossComputer import RhythmFormer_Loss
+from utils import logger
 
 class RhythmFormerTrainer(BaseTrainer):
 
@@ -27,7 +28,6 @@ class RhythmFormerTrainer(BaseTrainer):
         self.best_epoch = 0
         self.diff_flag = 0
         
-        print("WTF", config.TOOLBOX_MODE)
         if config.TRAIN.DATA.PREPROCESS.LABEL_TYPE == "DiffNormalized":
             self.diff_flag = 1
         if config.TOOLBOX_MODE == "train_and_test":
@@ -52,8 +52,8 @@ class RhythmFormerTrainer(BaseTrainer):
             raise ValueError("No data for train")
 
         for epoch in range(self.max_epoch_num):
-            print('')
-            print(f"====Training Epoch: {epoch}====")
+            logger.info('')
+            logger.info(f"====Training Epoch: {epoch}====")
             self.model.train()
 
             # Model Training
@@ -84,25 +84,25 @@ class RhythmFormerTrainer(BaseTrainer):
             self.save_model(epoch)
             if not self.config.TEST.USE_LAST_EPOCH: 
                 valid_loss = self.valid(data_loader)
-                print('validation loss: ', valid_loss)
+                logger.info(f'validation loss: { valid_loss}')
                 if self.min_valid_loss is None:
                     self.min_valid_loss = valid_loss
                     self.best_epoch = epoch
-                    print("Update best model! Best epoch: {}".format(self.best_epoch))
+                    logger.info("Update best model! Best epoch: {}".format(self.best_epoch))
                 elif (valid_loss < self.min_valid_loss):
                     self.min_valid_loss = valid_loss
                     self.best_epoch = epoch
-                    print("Update best model! Best epoch: {}".format(self.best_epoch))
+                    logger.info("Update best model! Best epoch: {}".format(self.best_epoch))
         if not self.config.TEST.USE_LAST_EPOCH: 
-            print("best trained epoch: {}, min_val_loss: {}".format(self.best_epoch, self.min_valid_loss))  
+            logger.info("best trained epoch: {}, min_val_loss: {}".format(self.best_epoch, self.min_valid_loss))  
 
 
     def valid(self, data_loader):
         """ Model evaluation on the validation dataset."""
         if data_loader["valid"] is None:
             raise ValueError("No data for valid")
-        print('')
-        print("===Validating===")
+        logger.info('')
+        logger.info("===Validating===")
         valid_loss = []
         self.model.eval()
         valid_step = 0
@@ -130,25 +130,25 @@ class RhythmFormerTrainer(BaseTrainer):
         if self.config.TOOLBOX_MODE == "only_test_student":
             return self.student_test(data_loader)
         
-        print('')
-        print("===Testing===")
+        logger.info('')
+        logger.info("===Testing===")
         if self.config.TOOLBOX_MODE == "only_test":
             if not os.path.exists(self.config.INFERENCE.MODEL_PATH):
                 raise ValueError("Inference model path error! Please check INFERENCE.MODEL_PATH in your yaml.")
             self.model.load_state_dict(torch.load(self.config.INFERENCE.MODEL_PATH))
-            print("Testing uses pretrained model!")
+            logger.info("Testing uses pretrained model!")
         else:
             if self.config.TEST.USE_LAST_EPOCH:
                 last_epoch_model_path = os.path.join(
                 self.model_dir, self.model_file_name + '_Epoch' + str(self.max_epoch_num - 1) + '.pth')
-                print("Testing uses last epoch as non-pretrained model!")
-                print(last_epoch_model_path)
+                logger.info("Testing uses last epoch as non-pretrained model!")
+                logger.info(last_epoch_model_path)
                 self.model.load_state_dict(torch.load(last_epoch_model_path))
             else:
                 best_model_path = os.path.join(
                     self.model_dir, self.model_file_name + '_Epoch' + str(self.best_epoch) + '.pth')
-                print("Testing uses best epoch selected using model selection as non-pretrained model!")
-                print(best_model_path)
+                logger.info("Testing uses best epoch selected using model selection as non-pretrained model!")
+                logger.info(best_model_path)
                 self.model.load_state_dict(torch.load(best_model_path))
 
         self.model = self.model.to(self.config.DEVICE)
@@ -172,7 +172,7 @@ class RhythmFormerTrainer(BaseTrainer):
                         labels[subj_index] = dict()
                     predictions[subj_index][sort_index] = pred_ppg_test[ib * chunk_len:(ib + 1) * chunk_len]
                     labels[subj_index][sort_index] = labels_test[ib * chunk_len:(ib + 1) * chunk_len]
-            print(' ')
+            logger.info(' ')
             calculate_metrics(predictions, labels, self.config)
 
     def student_test(self, data_loader):
@@ -180,29 +180,29 @@ class RhythmFormerTrainer(BaseTrainer):
         if data_loader["test"] is None:
             raise ValueError("No data for test")
 
-        print('')
-        print("===Student_Testing===")
+        logger.info('')
+        logger.info("===Student_Testing===")
         if self.config.TOOLBOX_MODE == "only_test" or self.config.TOOLBOX_MODE == "only_test_student":
             if not os.path.exists(self.config.INFERENCE.MODEL_PATH):
                 raise ValueError("Inference model path error! Please check INFERENCE.MODEL_PATH in your yaml.")
-            print("LOADED MODEL")
+            logger.info("LOADED MODEL")
             ckpt = torch.load(self.config.INFERENCE.MODEL_PATH)
             for layer_name in list(set(self.model.state_dict().keys()) - set(ckpt)):
-                print(f"layer not found {layer_name}")
+                logger.info(f"layer not found {layer_name}")
             self.model.load_state_dict(ckpt)
-            print("Testing uses pretrained model!")
+            logger.info("Testing uses pretrained model!")
         else:
             if self.config.TEST.USE_LAST_EPOCH:
                 last_epoch_model_path = os.path.join(
                 self.model_dir, self.model_file_name + '_Epoch' + str(self.max_epoch_num - 1) + '.pth')
-                print("Testing uses last epoch as non-pretrained model!")
-                print(last_epoch_model_path)
+                logger.info("Testing uses last epoch as non-pretrained model!")
+                logger.info(last_epoch_model_path)
                 self.model.load_state_dict(torch.load(last_epoch_model_path))
             else:
                 best_model_path = os.path.join(
                     self.model_dir, self.model_file_name + '_Epoch' + str(self.best_epoch) + '.pth')
-                print("Testing uses best epoch selected using model selection as non-pretrained model!")
-                print(best_model_path)
+                logger.info("Testing uses best epoch selected using model selection as non-pretrained model!")
+                logger.info(best_model_path)
                 self.model.load_state_dict(torch.load(best_model_path))
          
         self.model = self.model.to(self.config.DEVICE)
@@ -222,7 +222,7 @@ class RhythmFormerTrainer(BaseTrainer):
                     if subj_index not in predictions.keys():
                         predictions[subj_index] = dict()
                     predictions[subj_index][sort_index] = pred_ppg_test[ib * chunk_len:(ib + 1) * chunk_len]
-            print(' ')
+            logger.info(' ')
         return predictions
                 
     def save_model(self, index):
@@ -231,7 +231,7 @@ class RhythmFormerTrainer(BaseTrainer):
         model_path = os.path.join(
             self.model_dir, self.model_file_name + '_Epoch' + str(index) + '.pth')
         torch.save(self.model.state_dict(), model_path)
-        print('Saved Model Path: ', model_path)
+        logger.info(f'Saved Model Path: {model_path}')
 
 
     def data_augmentation(self,data,labels):
