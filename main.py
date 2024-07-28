@@ -93,7 +93,7 @@ def test(config, data_loader_dict):
     
     predictions = model_trainer.test(data_loader_dict)
     if predictions is not None:
-        file_count = len(os.listdir(config.TEST.DATA.SAVE_PATH))//2 + 1
+        file_count = len(os.listdir(config.TEST.DATA.SAVE_PATH))//2 
         torch.save(
             predictions, 
             os.path.join(config.TEST.DATA.SAVE_PATH,f"signals_{file_count}.pt")

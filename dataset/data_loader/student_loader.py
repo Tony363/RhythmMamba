@@ -75,7 +75,6 @@ class StudentLoader(BaseLoader):
     
     def __getitem__(self, index):
         """Returns a clip of video(3,T,W,H) and it's corresponding signals(T)."""
-        logger.info(f" WTF {self.inputs[index]}")
         data = np.load(self.inputs[index])
         # label = np.load(self.labels[index])
         data = np.float32(data)
@@ -284,7 +283,7 @@ class StudentLoader(BaseLoader):
         finally:
             cap.release()     
 
-        logger.info(f"in read_video: Finished reading {video_file} - Total frames: {len(frames)}")
+        # logger.info(f"in read_video: Finished reading {video_file} - Total frames: {len(frames)}")
         return np.array(frames)
 
     @staticmethod
