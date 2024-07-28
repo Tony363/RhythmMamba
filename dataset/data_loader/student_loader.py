@@ -249,6 +249,43 @@ class StudentLoader(BaseLoader):
         return np.asarray(frames)
 
     @staticmethod
+    def read_video(video_file):
+        """Reads a video file, returns frames(T, H, W, 3) """
+        frames = ()
+        cap = cv2.VideoCapture(video_file)
+
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        logger.info(f"FPS of video {video_file} = {fps}")
+
+        if fps > 35:
+            logger.info(f"Incompatible frame rate: {video_file}, FPS = {fps}")
+
+            selected_frames = StudentLoader.convert_fps(video_file, fps)
+            return selected_frames
+
+        if not cap.isOpened():
+            logger.info(f"Error: Unable to open video file {video_file}")
+            return np.array([])
+
+        try: 
+            while cap.isOpened():
+                ret, frame = cap.read()
+                if not ret:
+                    break
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                frames += (frame,)
+
+            cap.release()
+
+        except Exception as e:
+            logger.info(f"Error reading video file {video_file}: {e}")   
+        finally:
+            cap.release()     
+
+        logger.info(f"in read_video: Finished reading {video_file} - Total frames: {len(frames)}")
+        return np.array(frames)
+
+    @staticmethod
     def read_wave(bvp_file):
         """Reads a bvp signal file."""
         with open(bvp_file, "r") as f:
@@ -256,3 +293,30 @@ class StudentLoader(BaseLoader):
             str1 = str1.split("\n")
             bvp = [float(x) for x in str1[0].split()]
         return np.asarray(bvp)
+    
+    @staticmethod
+    def convert_fps(video_file, fps):
+        selected_frames = ()
+        cap = cv2.VideoCapture(video_file)
+
+        if not cap.isOpened():
+            logger.info(f"Error: unable to open {video_file}") 
+            return np.ones(300) 
+
+        count_to = fps // 30
+        counter = 0
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            if counter == count_to:
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                selected_frames += (frame,)
+                counter = 0
+            else:
+                counter += 1
+
+        cap.release()
+        return np.array(selected_frames)

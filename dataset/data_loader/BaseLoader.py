@@ -265,6 +265,7 @@ class BaseLoader(Dataset):
         if config_preprocess.DO_CHUNK:  # chunk data into snippets
             frames_clips, bvps_clips = self.chunk(
                 data, bvps, config_preprocess.CHUNK_LENGTH)
+            # logger.info(f"{frames_clips.shape} - {bvps_clips.shape}")
         else:
             frames_clips = np.array([data])
             bvps_clips = np.array([bvps])

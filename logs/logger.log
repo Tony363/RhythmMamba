@@ -1,6 +1,6 @@
-[logger|INFO|2024-07-14] Initializing ok.
-[logger|INFO|2024-07-14] Configuration:
-[logger|INFO|2024-07-14] BASE: ['']
+[logger|INFO|2024-07-27] Initializing ok.
+[logger|INFO|2024-07-27] Configuration:
+[logger|INFO|2024-07-27] BASE: ['']
 DEVICE: cuda:0
 INFERENCE:
   BATCH_SIZE: 16
@@ -42,7 +42,7 @@ TEST:
     DO_PREPROCESS: True
     END: 1.0
     EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
-    FILE_LIST_PATH: /home/tony/engagenet_train/rppg/signal_info_4.csv
+    FILE_LIST_PATH: /home/tony/engagenet_train/videos/signal_info_3993.csv
     FILTERING:
       EXCLUSION_LIST: ['']
       SELECT_TASKS: False
@@ -88,7 +88,7 @@ TEST:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-    SAVE_PATH: /home/tony/engagenet_train/rppg/
+    SAVE_PATH: /home/tony/engagenet_train/videos/
   METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
   OUTPUT_SAVE_DIR: 
   USE_LAST_EPOCH: False
@@ -261,347 +261,128 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-07-14] Preprocessing dataset...
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] ERROR: No Face Detected
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-14] Total Number of raw files preprocessed: 983
-[logger|INFO|2024-07-14] Cached Data Path /home/tony/engagenet_train/preprocess_mamba
-[logger|INFO|2024-07-14] File List Path /home/tony/engagenet_train/rppg/signal_info_4.csv
-[logger|INFO|2024-07-14]  test Preprocessed Dataset Length: 880
-[logger|INFO|2024-07-14] 
-[logger|INFO|2024-07-14] ===Student_Testing===
-[logger|INFO|2024-07-14] LOADED MODEL
-[logger|INFO|2024-07-14] Testing uses pretrained model!
-[logger|INFO|2024-07-14]  
+[logger|INFO|2024-07-27] Preprocessing dataset...
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_1.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_10.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_10.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_1.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_11.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_12.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_11.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_12.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_13.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_14.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_13.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_14.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_15.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_16.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_15.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_16.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_17.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_18.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_17.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_18.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_19.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_2.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_19.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_2.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_20.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_21.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_20.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_21.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_22.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_23.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_22.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_23.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_24.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_25.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_24.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_25.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] ERROR: No Face Detected
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_26.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_27.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_26.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_27.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_28.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_29.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_28.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_29.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_3.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_30.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_3.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_30.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] Warning: More than one faces are detected(Only cropping the biggest one.)
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_31.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_32.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_31.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_32.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_33.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_34.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_33.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_34.mp4 - Total frames: 238
+[logger|INFO|2024-07-27] ERROR: No Face Detected
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_4.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_5.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_4.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_5.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_6.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_6.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_7.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_7.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_8.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_8.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_9.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_1_9.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_0.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_0.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_1.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_1.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_10.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_10.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_11.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_11.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_12.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_12.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_13.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_13.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_14.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_14.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_15.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_15.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_16.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_16.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_17.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_17.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_18.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_18.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_19.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_19.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_2.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_2.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_20.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_20.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_21.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_21.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_22.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_22.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_23.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_23.mp4 - Total frames: 99
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_24.mp4 = 0.0
+[logger|INFO|2024-07-27] Error: Unable to open video file /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_24.mp4
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_25.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_25.mp4 - Total frames: 1
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_26.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_27.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_26.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_27.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] ERROR: No Face Detected
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_28.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_29.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_28.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_29.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_3.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_30.mp4 = 30.0
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_3.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_30.mp4 - Total frames: 300
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_4.mp4 = 30.0
+[logger|INFO|2024-07-27] FPS of video /home/tony/engagenet_train/videos/subject_68_0ng3yqwrg6_vid_2_5.mp4 = 30.0

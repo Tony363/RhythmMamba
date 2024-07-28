@@ -98,6 +98,9 @@ def test(config, data_loader_dict):
             predictions, 
             os.path.join(config.TEST.DATA.SAVE_PATH,f"signals_{file_count}.pt")
         )
+        process_files = os.listdir(config.TEST.DATA.CACHED_PATH)
+        for mdata in process_files:
+            os.remove(os.path.join(config.TEST.DATA.CACHED_PATH,mdata))
 
 def unsupervised_method_inference(config, data_loader):
     if not config.UNSUPERVISED.METHOD:
@@ -117,6 +120,7 @@ def unsupervised_method_inference(config, data_loader):
             unsupervised_predict(config, data_loader, "PBV")
         else:
             raise ValueError("Not supported unsupervised method!")
+    
 
 
 def student_collate_fn(
