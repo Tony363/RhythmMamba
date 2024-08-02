@@ -115,6 +115,7 @@ class StudentLoader(BaseLoader):
         if os.path.exists(data_path.split('videos')[0] + os.sep + cache_records + os.sep + "processed_list.txt"):
             with open(data_path.split('videos')[0] + os.sep + cache_records + os.sep + "processed_list.txt", "r") as f:
                 processed = [path.split(".mp4")[0].replace('\n','') for path in f.readlines()]
+
         data_dirs = [
             path 
             for path in sorted(glob.glob(data_path + os.sep + "subject*"))
@@ -248,7 +249,7 @@ class StudentLoader(BaseLoader):
             frames.append(frame)
             success, frame = VidObj.read()
         return np.asarray(frames)
-
+    '''
     @staticmethod
     def read_video(video_file):
         """Reads a video file, returns frames(T, H, W, 3) """
@@ -286,6 +287,8 @@ class StudentLoader(BaseLoader):
         # logger.info(f"in read_video: Finished reading {video_file} - Total frames: {len(frames)}")
         return np.array(frames)
 
+    '''
+    
     @staticmethod
     def read_wave(bvp_file):
         """Reads a bvp signal file."""

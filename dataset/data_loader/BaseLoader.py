@@ -64,10 +64,10 @@ class BaseLoader(Dataset):
         assert (config_data.BEGIN > 0 or config_data.BEGIN == 0)
         assert (config_data.END < 1 or config_data.END == 1)
         
-        if config_data.DATASET == "student" and not config_data.DO_PREPROCESS:
-            self.inputs = self.get_raw_data(self.raw_data_path)
-            self.unprocessed_inputs = len(self.inputs) - 1
-            return
+        # if config_data.DATASET == "student" and not config_data.DO_PREPROCESS:
+        #     self.inputs = self.get_raw_data(self.raw_data_path)
+        #     self.unprocessed_inputs = len(self.inputs) - 1
+        #     return
         
         if config_data.DO_PREPROCESS:
             self.raw_data_dirs = self.get_raw_data(self.raw_data_path)
@@ -209,12 +209,11 @@ class BaseLoader(Dataset):
             end(float): index of ending during train/val split.
         """
         # send data directories to be processed
+        data_dirs_split = self.split_raw_data(data_dirs, begin, end)  # partition dataset 
         if config_preprocess.MULTI_PROCESS:
-            data_dirs_split = self.split_raw_data(data_dirs, begin, end)  # partition dataset 
             file_list_dict = self.multi_process_manager(data_dirs_split, config_preprocess)
         else:
             file_list_dict = self.seq_list_dict(data_dirs,config_preprocess)
-            data_dirs_split = []
         self.build_file_list(file_list_dict)  # build file list
         self.load_preprocessed_data()  # load all data and corresponding labels (sorted for consistency)
         logger.info(f"Total Number of raw files preprocessed: {len(data_dirs_split)}")

@@ -36,7 +36,7 @@ VALID:
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
-    DO_PREPROCESS: False                 # if first time, should be true
+    DO_PREPROCESS: True                # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "../../../space/user/DataSet/UBFC/"          # Raw dataset path, need to be updated
     CACHED_PATH: "../dataset/UBFC/"    # Processed dataset save path, need to be updated

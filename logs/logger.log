@@ -1,6 +1,6 @@
-[logger|INFO|2024-08-01] Initializing ok.
-[logger|INFO|2024-08-01] Configuration:
-[logger|INFO|2024-08-01] BASE: ['']
+[logger|INFO|2024-08-02] Initializing ok.
+[logger|INFO|2024-08-02] Configuration:
+[logger|INFO|2024-08-02] BASE: ['']
 DEVICE: cuda:0
 INFERENCE:
   BATCH_SIZE: 4
@@ -261,18 +261,13 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_0_2msdhgqawh_vid_0_0.mp4 = 30.0
-[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_0_2msdhgqawh_vid_0_2.mp4 = 30.0
-[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_126_kto30htac2_vid_1_26.mp4 = 30.0
-[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_1_1zug2hqfz1_vid_1_13.mp4 = 30.0
-[logger|INFO|2024-08-01] ERROR: No Face Detected
-[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_99_ba9vy3wat3_vid_0_2.mp4 = 30.0
-[logger|INFO|2024-08-01] Total Number of raw files preprocessed: 0
-[logger|INFO|2024-08-01] Cached Data Path /home/tony/engagenet_train/preprocess_former
-[logger|INFO|2024-08-01] File List Path /home/tony/engagenet_train/test_vid/rppg_former/signal_info_1.csv
-[logger|INFO|2024-08-01]  test Preprocessed Dataset Length: 5
-[logger|INFO|2024-08-01] 
-[logger|INFO|2024-08-01] ===Student_Testing===
-[logger|INFO|2024-08-01] LOADED MODEL
-[logger|INFO|2024-08-01] Testing uses pretrained model!
-[logger|INFO|2024-08-01]  
+[logger|INFO|2024-08-02] ERROR: No Face Detected
+[logger|INFO|2024-08-02] Total Number of raw files preprocessed: 5
+[logger|INFO|2024-08-02] Cached Data Path /home/tony/engagenet_train/preprocess_former
+[logger|INFO|2024-08-02] File List Path /home/tony/engagenet_train/test_vid/rppg_former/signal_info_1.csv
+[logger|INFO|2024-08-02]  test Preprocessed Dataset Length: 5
+[logger|INFO|2024-08-02] 
+[logger|INFO|2024-08-02] ===Student_Testing===
+[logger|INFO|2024-08-02] LOADED MODEL
+[logger|INFO|2024-08-02] Testing uses pretrained model!
+[logger|INFO|2024-08-02]  
