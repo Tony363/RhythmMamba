@@ -1,14 +1,14 @@
-[logger|INFO|2024-07-28] Initializing ok.
-[logger|INFO|2024-07-28] Configuration:
-[logger|INFO|2024-07-28] BASE: ['']
+[logger|INFO|2024-08-01] Initializing ok.
+[logger|INFO|2024-08-01] Configuration:
+[logger|INFO|2024-08-01] BASE: ['']
 DEVICE: cuda:0
 INFERENCE:
-  BATCH_SIZE: 16
+  BATCH_SIZE: 4
   EVALUATION_METHOD: FFT
   EVALUATION_WINDOW:
     USE_SMALLER_WINDOW: False
     WINDOW_SIZE: 10
-  MODEL_PATH: PreTrainedModels/UBFC_cross_RhythmMamba.pth
+  MODEL_PATH: PreTrainedModels/UBFC_cross_RhythmFormer.pth
 LOG:
   PATH: runs/exp/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
 MODEL:
@@ -18,7 +18,7 @@ MODEL:
   EFFICIENTPHYS:
     FRAME_DEPTH: 10
   MODEL_DIR: ../../../experiment0/user/PreTrainedModels/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
-  NAME: RhythmMamba
+  NAME: RhythmFormer
   PHYSFORMER:
     DIM: 96
     FF_DIM: 144
@@ -35,14 +35,14 @@ NUM_OF_GPU_TRAIN: 1
 TEST:
   DATA:
     BEGIN: 0.0
-    CACHED_PATH: /home/tony/engagenet_train/preprocess_mamba
+    CACHED_PATH: /home/tony/engagenet_train/preprocess_former
     DATASET: student
     DATA_FORMAT: NDCHW
-    DATA_PATH: /home/tony/engagenet_train/videos
+    DATA_PATH: /home/tony/engagenet_train/test_vid
     DO_PREPROCESS: True
     END: 1.0
-    EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
-    FILE_LIST_PATH: /home/tony/engagenet_train/rppg_mamba/signal_info_5.csv
+    EXP_DATA_NAME: student_SizeW128_SizeH128_ClipLength300_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
+    FILE_LIST_PATH: /home/tony/engagenet_train/test_vid/rppg_former/signal_info_1.csv
     FILTERING:
       EXCLUSION_LIST: ['']
       SELECT_TASKS: False
@@ -53,14 +53,14 @@ TEST:
       FOLD_PATH: 
     FS: 30
     INFO:
-      EXERCISE: [1, 2]
-      GENDER: [1, 2]
-      GLASSER: [1, 2]
-      HAIR_COVER: [1, 2]
-      LIGHT: [1, 2, 3, 4]
-      MAKEUP: [1, 2]
-      MOTION: [1, 2, 3, 4]
-      SKIN_COLOR: [3, 4, 5, 6]
+      EXERCISE: [True]
+      GENDER: ['']
+      GLASSER: [True]
+      HAIR_COVER: [True]
+      LIGHT: ['']
+      MAKEUP: [True]
+      MOTION: ['']
+      SKIN_COLOR: [1]
     PREPROCESS:
       BIGSMALL:
         BIG_DATA_TYPE: ['']
@@ -70,7 +70,7 @@ TEST:
           SMALL_H: 9
           SMALL_W: 9
         SMALL_DATA_TYPE: ['']
-      CHUNK_LENGTH: 160
+      CHUNK_LENGTH: 300
       CROP_FACE:
         DETECTION:
           DO_DYNAMIC_DETECTION: False
@@ -83,25 +83,25 @@ TEST:
       DATA_TYPE: ['Standardized']
       DO_CHUNK: True
       LABEL_TYPE: Standardized
-      MULTI_PROCESS: True
+      MULTI_PROCESS: False
       RESIZE:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-    SAVE_PATH: /home/tony/engagenet_train/rppg_mamba/
+    SAVE_PATH: /home/tony/engagenet_train/test_vid/rppg_former/
   METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
   OUTPUT_SAVE_DIR: 
   USE_LAST_EPOCH: False
 TOOLBOX_MODE: only_test_student
 TRAIN:
   AUG: 0
-  BATCH_SIZE: 16
+  BATCH_SIZE: 4
   DATA:
     BEGIN: 0.0
     CACHED_PATH: ../dataset/UBFC/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
     DATASET: UBFC-rPPG
     DATA_FORMAT: NDCHW
-    DATA_PATH: ../../../space/user/DataSet/UBFC/
+    DATA_PATH: /experiment0/user/DataSet/UBFC/
     DO_PREPROCESS: False
     END: 0.8
     EXP_DATA_NAME: UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
@@ -151,8 +151,8 @@ TRAIN:
         W: 128
       USE_PSUEDO_PPG_LABEL: False
   EPOCHS: 30
-  LR: 0.0003
-  MODEL_FILE_NAME: UBFC_MMPD_RhythmMamba
+  LR: 0.009
+  MODEL_FILE_NAME: UBFC_PURE_RhythmFormer
   OPTIMIZER:
     BETAS: (0.9, 0.999)
     EPS: 0.0001
@@ -212,7 +212,7 @@ VALID:
     CACHED_PATH: ../dataset/UBFC/UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
     DATASET: UBFC-rPPG
     DATA_FORMAT: NDCHW
-    DATA_PATH: ../../../space/user/DataSet/UBFC/
+    DATA_PATH: /experiment0/user/DataSet/UBFC/
     DO_PREPROCESS: False
     END: 1.0
     EXP_DATA_NAME: UBFC-rPPG_SizeW128_SizeH128_ClipLength160_DataTypeStandardized_DataAugNone_LabelTypeStandardized_Crop_faceTrue_Large_boxTrue_Large_size1.5_Dyamic_DetFalse_det_len30_Median_face_boxFalse
@@ -261,275 +261,18 @@ VALID:
         H: 128
         W: 128
       USE_PSUEDO_PPG_LABEL: False
-[logger|INFO|2024-07-28] Preprocessing dataset...
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_2.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_20.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_2.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_20.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_21.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_22.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_21.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_22.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-28] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_23.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_24.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_23.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_24.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_25.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_3.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_25.mp4 - Total frames: 150
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_3.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_4.mp4 = 30.0
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_4.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_5.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_6.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_5.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_6.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_7.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_8.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_7.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_8.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_9.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_0.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_3_btqwl6h4hq_vid_2_9.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_0.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_1.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_10.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_1.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_10.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_11.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_12.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_11.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] Warning: More than one faces are detected(Only cropping the biggest one.)
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_12.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_13.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_13.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_14.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_14.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_15.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_15.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_16.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_16.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_17.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_17.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_18.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_18.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_19.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_19.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_2.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_2.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_20.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_20.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_21.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_21.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_22.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_22.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_23.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_23.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_24.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_24.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_25.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_25.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_26.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_26.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_27.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_27.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_3.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_4.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_3.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_4.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_5.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_6.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_6.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_5.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_7.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_8.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_7.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_8.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_9.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_0.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_0_9.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_0.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_1.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_10.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_10.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_1.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_11.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_12.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_11.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_12.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_13.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_14.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_14.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_13.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_15.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_16.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_15.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_16.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_17.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_18.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_17.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_18.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_19.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_2.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_19.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_2.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_20.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_21.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_20.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_21.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_22.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_23.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_22.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_23.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_24.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_25.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_24.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_25.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_26.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_27.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_26.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_27.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_28.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_29.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_28.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_29.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_3.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_30.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_3.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_30.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_31.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_32.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_31.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_32.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_33.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_4.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_33.mp4 - Total frames: 258
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_4.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_5.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_6.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_5.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_6.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_7.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_8.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_7.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_8.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_9.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_0.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_1_9.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_0.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_1.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_10.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_1.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_10.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_11.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_12.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_11.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_12.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_13.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_14.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_13.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_14.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_15.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_15.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_16.mp4 = 30.0
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_16.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_17.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_18.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_17.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_18.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_19.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_2.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_2.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_19.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_20.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_21.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_20.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_21.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_22.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_23.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_22.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_23.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_24.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_25.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_24.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_25.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_26.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_26.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_27.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_27.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_28.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_28.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_29.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_29.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_3.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_3.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_30.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_30.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_31.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_31.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_32.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_32.mp4 - Total frames: 139
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_4.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_5.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_4.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_5.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_6.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_7.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_6.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_7.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_8.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_8.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_9.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_41_w4dfz5rl13_vid_2_9.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_0.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_0.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_1.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_1.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_10.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_42_1lglrvzf4u_vid_0_10.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_0.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_0.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_1.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_1.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_10.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_10.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_11.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_12.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_11.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_12.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_13.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_14.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_13.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_14.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_15.mp4 = 30.0
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_15.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_16.mp4 = 30.0
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_17.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_16.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_17.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_18.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_18.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_19.mp4 = 30.0
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_19.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_2.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_2.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_20.mp4 = 30.0
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_20.mp4 - Total frames: 300
-[logger|INFO|2024-07-28] FPS of video /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_21.mp4 = 30.0
-[logger|INFO|2024-07-28] ERROR: No Face Detected
-[logger|INFO|2024-07-28] in read_video: Finished reading /home/tony/engagenet_train/videos/subject_43_91ft3xter0_vid_0_21.mp4 - Total frames: 300
+[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_0_2msdhgqawh_vid_0_0.mp4 = 30.0
+[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_0_2msdhgqawh_vid_0_2.mp4 = 30.0
+[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_126_kto30htac2_vid_1_26.mp4 = 30.0
+[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_1_1zug2hqfz1_vid_1_13.mp4 = 30.0
+[logger|INFO|2024-08-01] ERROR: No Face Detected
+[logger|INFO|2024-08-01] FPS of video /home/tony/engagenet_train/test_vid/subject_99_ba9vy3wat3_vid_0_2.mp4 = 30.0
+[logger|INFO|2024-08-01] Total Number of raw files preprocessed: 0
+[logger|INFO|2024-08-01] Cached Data Path /home/tony/engagenet_train/preprocess_former
+[logger|INFO|2024-08-01] File List Path /home/tony/engagenet_train/test_vid/rppg_former/signal_info_1.csv
+[logger|INFO|2024-08-01]  test Preprocessed Dataset Length: 5
+[logger|INFO|2024-08-01] 
+[logger|INFO|2024-08-01] ===Student_Testing===
+[logger|INFO|2024-08-01] LOADED MODEL
+[logger|INFO|2024-08-01] Testing uses pretrained model!
+[logger|INFO|2024-08-01]  

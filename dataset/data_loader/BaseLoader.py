@@ -214,6 +214,7 @@ class BaseLoader(Dataset):
             file_list_dict = self.multi_process_manager(data_dirs_split, config_preprocess)
         else:
             file_list_dict = self.seq_list_dict(data_dirs,config_preprocess)
+            data_dirs_split = []
         self.build_file_list(file_list_dict)  # build file list
         self.load_preprocessed_data()  # load all data and corresponding labels (sorted for consistency)
         logger.info(f"Total Number of raw files preprocessed: {len(data_dirs_split)}")
@@ -471,7 +472,7 @@ class BaseLoader(Dataset):
             p_.join()
             pbar.update(1)
         pbar.close()
-
+        logger.info(f" WTF {file_list_dict}")
         return file_list_dict
 
     def build_file_list(self, file_list_dict):

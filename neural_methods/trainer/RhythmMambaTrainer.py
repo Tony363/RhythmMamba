@@ -220,7 +220,7 @@ class RhythmMambaTrainer(BaseTrainer):
                     sort_index = int(test_batch[3][ib])
                     if subj_index not in predictions.keys():
                         predictions[subj_index] = dict()
-                    predictions[subj_index][sort_index] = pred_ppg_test[ib * chunk_len:(ib + 1) * chunk_len]
+                    predictions[subj_index][sort_index] = pred_ppg_test[ib * chunk_len:(ib + 1) * chunk_len].cpu()
             logger.info(' ')
         return predictions
 

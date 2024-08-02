@@ -192,7 +192,7 @@ class StudentLoader(BaseLoader):
         input_path_name_list = []
         for i in range(len(bvps_clips)):
             assert (len(self.inputs) == len(self.labels))
-            input_path_name = self.cached_path + os.sep + "{0}_input_{1}.npy".format(filename, str(count))
+            input_path_name = self.cached_path + os.sep + "{}_{}.npy".format(filename, str(count))
             input_path_name_list.append(input_path_name)
             np.save(input_path_name, frames_clips[i])
             count += 1
@@ -214,11 +214,11 @@ class StudentLoader(BaseLoader):
         """
         file_list_dict = {}
         for i in tqdm(range(len(data_dirs))):
-            saved_filename = data_dirs[i]['index']
-            frames = self.read_video(data_dirs[i]['path'])
+            saved_filename = data_dirs[i]['path']
+            frames = self.read_video(saved_filename)
             bvps = np.ones(frames.shape[0])
             frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
-            input_name_list, _ = self.save(frames_clips, bvps_clips, saved_filename)
+            input_name_list, _ = self.save(frames_clips, bvps_clips, saved_filename.split(os.sep)[-1].replace('.mp4',''))
             file_list_dict[i] = input_name_list
         return file_list_dict
 

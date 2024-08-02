@@ -83,11 +83,11 @@ TEST:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      MULTI_PROCESS: True
+      MULTI_PROCESS: False
       DATA_TYPE: ['Standardized']
       LABEL_TYPE: Standardized
       DO_CHUNK: True
-      CHUNK_LENGTH: 160 # 160
+      CHUNK_LENGTH: 300 # 160
       CROP_FACE:
         DO_CROP_FACE: True
         USE_LARGE_FACE_BOX: True
